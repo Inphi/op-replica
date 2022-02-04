@@ -9,8 +9,12 @@ if [[ -z $BLOCK_SIGNER_ADDRESS ]]; then
     echo "Must pass BLOCK_SIGNER_ADDRESS"
     exit 1
 fi
+if [[ -n $L2GETH_TOML_CONFIG ]]; then
+    echo "Using custom toml at $L2GETH_TOML_CONFIG"
+    GETH_CONFIG_FILE_FLAG=--config=$L2GETH_TOML_CONFIG
+fi
 
-exec geth \
+exec geth $GETH_CONFIG_FILE_FLAG \
   --datadir=$DATADIR \
   --password=$DATADIR/password \
   --allow-insecure-unlock \
