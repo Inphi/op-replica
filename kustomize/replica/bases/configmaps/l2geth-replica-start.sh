@@ -11,7 +11,7 @@ if [[ -z $BLOCK_SIGNER_ADDRESS ]]; then
 fi
 if [[ -n $L2GETH_TOML_CONFIG ]]; then
     echo "Using custom toml at $L2GETH_TOML_CONFIG"
-    GETH_CONFIG_FILE_FLAG=--config=$L2GETH_TOML_CONFIG
+    GETH_CONFIG_FILE_FLAG=--config=scripts/$L2GETH_TOML_CONFIG
 fi
 
 exec geth $GETH_CONFIG_FILE_FLAG \
